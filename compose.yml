@@ -1,0 +1,16 @@
+services:
+  ansible-runner:
+    build: .
+    image: ansible-runner
+    container_name: ansible-runner
+    restart: always
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    devices:
+      - /dev/net/tun
+    volumes:
+      - .:/ansible
+      - ~/.ssh:/ssh:ro
+    working_dir: /ansible

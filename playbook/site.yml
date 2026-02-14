@@ -1,0 +1,6 @@
+- name: Raspberry Pi base configuration
+  hosts: all
+  become: true
+
+  roles:
+    - docker

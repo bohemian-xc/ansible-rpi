@@ -1,0 +1,15 @@
+FROM python:3.12-slim-bookworm
+FROM debian:bookworm-slim
+
+WORKDIR /ansible
+
+RUN apt-get update && \
+    apt-get install --no-install-recommends -y build-essential && \
+    apt-get install --no-install-recommends -y git && \
+    apt-get install --no-install-recommends -y ssh && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir ansible
+
+ENTRYPOINT ["ansible-playbook"]

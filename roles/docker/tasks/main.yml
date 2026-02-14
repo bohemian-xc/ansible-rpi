@@ -1,0 +1,21 @@
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install Docker packages
+  apt:
+    name: "{{ docker_packages }}"
+    state: present
+
+- name: Enable Docker service
+  systemd:
+    name: docker
+    enabled: true
+    state: started
+
+- name: Add ansible user to docker group
+  user:
+    name: ansible
+    groups: docker
+    append: yes
