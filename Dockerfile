@@ -1,5 +1,5 @@
 FROM python:3.12-slim-bookworm
-FROM debian:bookworm-slim
+#FROM debian:bookworm-slim
 
 WORKDIR /ansible
 
